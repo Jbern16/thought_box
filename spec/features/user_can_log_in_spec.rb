@@ -28,7 +28,7 @@ feature "User Can Login" do
         click_on "Sign In" 
       end 
 
-      expect(current_path).to eq user_path(user)
+      expect(current_path).to eq links_path
       expect(page).to have_content "Success - Welcome"
 
     end 

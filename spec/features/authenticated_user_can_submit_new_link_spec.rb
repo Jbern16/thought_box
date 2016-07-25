@@ -34,8 +34,15 @@ feature "authenticated user can submit new link to main page" do
         expect(page).to have_content "http://example.com"
         expect(page).to have_content "test"
       end 
-
     end
+    
+    scenario "as a unauthenticated user, I can not view the my links or create new ones" do 
+      visit links_path
+      expect(page).to have_content "404"
+    end 
+
+
+
   end  
   
 

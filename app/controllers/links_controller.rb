@@ -1,5 +1,6 @@
 class LinksController < ApplicationController
-
+  before_action :authorize!
+  
   def index
     @links = Link.all
     @link = Link.new
