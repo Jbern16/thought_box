@@ -1,6 +1,7 @@
 <%= render partial: "new_link" %>
 <section class="links">
   <h2>All Your Links</h2>
+  <input id="search" placeholder="Search Links">
   <% @links.each do |link| %>
     <ul class="<%= 'striked' if link.read %>" id="link-<%=link.id%>" data-id="<%= link.id %>">
       <li class="link-title" contenteditable="true"><%= link.title %></li>
