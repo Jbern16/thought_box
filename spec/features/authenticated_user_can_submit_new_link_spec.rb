@@ -30,7 +30,7 @@ feature "authenticated user can submit new link to main page" do
 
       expect(current_path).to eq links_path
 
-      within("#link-test") do 
+      within("#link-#{link.id}") do 
         expect(page).to have_content "http://example.com"
         expect(page).to have_content "test"
       end 
