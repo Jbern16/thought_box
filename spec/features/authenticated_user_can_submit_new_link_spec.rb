@@ -41,8 +41,32 @@ feature "authenticated user can submit new link to main page" do
       expect(page).to have_content "404"
     end 
 
+    scenario "invalid url should not be saved" do 
+
+      user = User.create(email: "jon@jon.com", password: "password", password_confirmation: "password")
+
+      visit root_path
+
+      within(".sign-in-form") do 
+        fill_in "Email", with: "jon@jon.com"
+        fill_in "Password", with: "password"
+        click_on "Sign In" 
+      end
 
 
-  end  
+      within(".new-link-form") do 
+        fill_in "Url", with: "example.com"
+        fill_in "Title", with: "test"
+        click_on "Create Link"
+      end 
+
+      expect(current_path).to eq links_path
+      within(".error") do 
+        expect(page).to have_content "Link Not Valid"
+      end 
+
+      expect(Link.find_by(title: "test")).to eq nil
+    end 
+  end   
   
 
