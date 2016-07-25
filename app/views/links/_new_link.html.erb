@@ -1,0 +1,7 @@
+<section class="new-link-form">
+  <%= form_for @link do |f| %>
+    <%= f.text_field :title, placeholder: 'Title' %>
+    <%= f.text_field :url, placeholder: 'Url' %> 
+    <%= f.submit "Create Link" %> 
+  <% end %>  
+</section>

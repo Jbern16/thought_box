@@ -5,10 +5,9 @@ feature "user can log out" do
 
       user = User.create(email: "jon@jon.com", password: "password", password_confirmation: "password")
 
-      visit root_path
 
-      click_on "Sign In"
-
+      visit login_path
+      
       expect(current_path).to eq login_path
 
       within(".sign-in-form") do 
