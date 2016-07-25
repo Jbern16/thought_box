@@ -3,5 +3,6 @@
     <%= link_to "Sign Up", new_user_path unless @current_user %>
     <%= link_to "Sign In", login_path unless @current_user %>
     <%= link_to "Sign Out", logout_path, method: :delete if @current_user %>
+    <%= link_to "Links", links_path if @current_user %>
   </span>
 </nav>

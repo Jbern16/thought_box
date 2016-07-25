@@ -5,9 +5,10 @@ feature "User Can Login" do
     
     visit root_path
 
-    expect(page).to have_content 'Sign In'
-
-    end
+    within("nav") do 
+      expect(page).to have_content 'Sign In'
+    end 
+  end
 
     scenario "when they click on the sign in they are taken to a page to enter their username and password" do 
 
@@ -15,7 +16,9 @@ feature "User Can Login" do
 
       visit root_path
 
-      click_on "Sign In"
+      within("nav") do 
+        click_on "Sign In"
+      end 
 
       expect(current_path).to eq login_path
 
@@ -25,7 +28,7 @@ feature "User Can Login" do
         click_on "Sign In" 
       end 
 
-      expect(current_path).to eq user_path(user)
+      expect(current_path).to eq links_path
       expect(page).to have_content "Success - Welcome"
 
     end 
@@ -34,9 +37,7 @@ feature "User Can Login" do
 
       user = User.create(email: "jon@jon.com", password: "password", password_confirmation: "password")
 
-      visit root_path
-
-      click_on "Sign In"
+      visit login_path
 
       expect(current_path).to eq login_path
 

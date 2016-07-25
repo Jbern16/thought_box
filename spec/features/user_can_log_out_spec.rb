@@ -5,9 +5,8 @@ feature "user can log out" do
 
       user = User.create(email: "jon@jon.com", password: "password", password_confirmation: "password")
 
-      visit root_path
 
-      click_on "Sign In"
+      visit login_path
 
       expect(current_path).to eq login_path
 
@@ -25,7 +24,7 @@ feature "user can log out" do
         expect(page).to have_content "Success You have Been Logged Out"
       end 
 
-      visit user_path(user)
+      visit links_path
 
       expect(page).to have_content "404"
     end

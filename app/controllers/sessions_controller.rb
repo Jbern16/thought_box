@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       flash[:succes] = "Success - Welcome"
-      redirect_to user_path(@user)
+      redirect_to links_path
     else 
       flash[:error] = "Incorrect Email/Password"
       redirect_to login_path
