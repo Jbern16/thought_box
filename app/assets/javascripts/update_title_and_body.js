@@ -26,6 +26,10 @@ var sendUpdate = function(id, data, url) {
     dataType: "JSON",
     success: function(response) {
       $("#link-" + id).children(".link-url").children("a").attr("href", url)
+    },
+    error: function(response) {
+      $("#link-" + id).children(".link-url").children("a").text(response.responseText)
+      alert("Invalid Url")
     }
   }) 
 }
