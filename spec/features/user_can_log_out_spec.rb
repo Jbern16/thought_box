@@ -17,14 +17,14 @@ feature "user can log out" do
         click_on "Sign In" 
       end 
 
-      expect(page).to have_content "Log Out"
+      expect(page).to have_content "Sign Out"
       
-      click_on "Log Out"
+      click_on "Sign Out"
       
       within(".success") do 
         expect(page).to have_content "Success You have Been Logged Out"
       end 
-      
+
       visit user_path(user)
 
       expect(page).to have_content "404"
