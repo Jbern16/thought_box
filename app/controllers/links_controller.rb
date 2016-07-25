@@ -2,12 +2,12 @@ class LinksController < ApplicationController
   before_action :authorize!
   
   def index
-    @links = Link.all
-    @link = Link.new
+    @links = current_user.links.all
+    @link = current_user.links.new
   end 
 
   def create
-    link = Link.new(link_params)
+    link = current_user.links.new(link_params)
 
     if link.save 
       flash[:success] = 'Link Created'
