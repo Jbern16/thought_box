@@ -1,9 +1,12 @@
 <%= render partial: "new_link" %>
 <section class="links">
+  <h2>All Your Links</h2>
   <% @links.each do |link| %>
-    <ul id="link-<%=link.id%>" data-id="<%= link.id %>">
-      <li><%= link.title %></li>
-      <li><%= link.url %></li>
+    <ul class="<%= 'striked' if link.read %>" id="link-<%=link.id%>" data-id="<%= link.id %>">
+      <li class="link-title" contenteditable="true"><%= link.title %></li>
+      <li class="link-url"  contenteditable="true">
+          <a href="<%= link.url %>"><%= link.url %></a>
+      </li>
       <label><input class="read-box" type="checkbox" value="<%= link.read %>">Mark As Read</label>  
     </ul>
   <% end %>
