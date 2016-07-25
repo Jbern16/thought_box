@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
   resources :users, except: [:show]
   resources :links, only: [:index, :create]
+
+  namespace :api, defaults: { format: :json } do 
+    namespace :v1 do 
+      resources :links, only: [:update]
+    end
+  end 
+
   get "/login", to: 'sessions#new' 
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
