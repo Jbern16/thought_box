@@ -7,7 +7,7 @@ $(document).ready(function(){
       data: { "link": {"read": "true"} },
       dataType: "JSON",
       success: function(response) {
-        $("#link-" + id).css("text-decoration", "line-through")
+        $("#link-" + id).addClass(".striked")
       }
     })
   })
