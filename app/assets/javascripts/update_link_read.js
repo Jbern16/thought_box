@@ -8,6 +8,7 @@ $(document).ready(function(){
       dataType: "JSON",
       success: function(response) {
         $("#link-" + id).css("text-decoration", "line-through")
+        $("#link-" + id).addClass(".striked")  
       }
     })
   })
